@@ -4,7 +4,7 @@ type ProductCreate = {
     picUrl?: string;
 }
 
-type CartProduct = ProductCreate & {
+type CartProduct = Product & {
     count: number;
 }
 
@@ -38,14 +38,15 @@ class Product {
 class Cart {
     static readonly list: CartProduct[] = []
 
-    add(nm_id: number) {
+    static  add(nm_id: number) {
         const product = ProductManager.nomenclature.find(product => product.nm_id == nm_id)
         if (product) {
             Cart.list.push({...product, count: 1})
+            console.log("товар",product.name," добавлен")
         }
     }
 
-    increment(nm_id: number) {
+    static   increment(nm_id: number) {
         Cart.list.find(product => {
             if (nm_id == nm_id) {
                 product.count++
@@ -54,7 +55,7 @@ class Cart {
         })
     }
 
-    decrement(nm_id: number) {
+    static   decrement(nm_id: number) {
         Cart.list.find((product, ind) => {
             if (nm_id == nm_id) {
                 if (product.count > 1) {
@@ -68,10 +69,19 @@ class Cart {
         })
     }
 
-    createOrder() {
+    static  createOrder() {
         const newOrderNum = OrderManager.lastNumOrder++
-        const newOrder: Order = new Order(Cart.list, newOrderNum)
+        const newOrder: Order = new Order([...Cart.list], newOrderNum)
         OrderManager.orders.push(newOrder)
+        Cart.list.length = 0
+    }
+
+    static print() {
+        console.log("товары в корзине: ")
+        console.log("№  |  название   |  цена  | кол-во")
+        Cart.list.forEach((product, index) => {
+            console.log(index + 1, " | ", product.nm_id, " | ", product.name, " | ", product.price, "р.", product.count,"шт")
+        })
     }
 }
 
@@ -79,21 +89,97 @@ class OrderManager {
     static lastNumOrder: number = 10000
     static readonly orders: Order[] = []
 
-    gerOrders() {
+   static gerOrders() {
         return OrderManager.orders
     }
+
+    static print() {
+        console.log("заказы: ")
+        const orders = OrderManager.gerOrders()
+        orders.forEach(order=>{
+            console.log('заказ №:', order.num)
+            console.log('создан:', order.date)
+            console.log('товаров:',order.goods.length)
+            order.goods.forEach(product=>{
+                console.log(" название   |  цена  | кол-во")
+                console.log( product.nm_id, " | ", product.name, " | ", product.price, "р.", product.count,"шт")
+            })
+        })
+
+    }
+
 }
 
 class ProductManager {
     static readonly nomenclature: Product[] = [];
 
-    createProduct(name: string, price: number, picUrl?: string) {
+    static createProduct(name: string, price: number, picUrl?: string) {
         const newProduct = new Product({name, price, picUrl});
         ProductManager.nomenclature.push(newProduct);
+        console.log("номер в номенклатуре  |  название   |  цена ")
+        console.log(newProduct.nm_id, " | ", name, " | ", price, "р.")
     }
 
-    remove(nm_id: number) {
+    static remove(nm_id: number) {
         const index = ProductManager.nomenclature.findIndex(product => product.nm_id == nm_id);
+        console.log(' товар: "', ProductManager.nomenclature[index].name, '"   удален')
         ProductManager.nomenclature.splice(index, 1);
+
+
+    }
+
+    static printProducts() {
+        console.log("номенклатура: ")
+        console.log("№ | номер в номенклатуре  |  название   |  цена ")
+        ProductManager.nomenclature.forEach((product: Product, index) => {
+            console.log(index + 1, " | ", product.nm_id, " | ", product.name, " | ", product.price, "р.")
+        })
     }
 }
+
+console.log("создать новый товар 1")
+console.log("\n")
+ProductManager.createProduct('телевизор', 15000)
+console.log("\n")
+console.log("создать новый товар 2")
+console.log("\n")
+ProductManager.createProduct('стиральная машина', 20000)
+console.log("\n")
+console.log("посмотреть все товары")
+ProductManager.printProducts()
+console.log("\n")
+
+console.log("удалить  товар 1")
+ProductManager.remove(1000)
+console.log("\n")
+
+console.log("посмотреть все товары")
+ProductManager.printProducts()
+console.log("\n")
+
+console.log("добавить  товар 2 в корзину")
+Cart.add(1001)
+console.log("\n")
+console.log("посмотреть все товары в корзине")
+Cart.print()
+console.log("\n")
+
+console.log("прибавить  товара")
+Cart.increment(1001)
+console.log("посмотреть все товары в корзине")
+Cart.print()
+console.log("\n")
+
+
+
+console.log("сделать заказ")
+Cart.createOrder()
+console.log("посмотреть все товары в корзине")
+Cart.print()
+console.log("\n")
+
+
+
+console.log("посмотреть заказы")
+OrderManager.print()
+console.log("\n")
