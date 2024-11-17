@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task manager</title>
+    <link rel="stylesheet" href="style.css">
+<body>
+<div class="desk">
+    <button id="openModal">Новая задача</button>
+    <div class="desk__head">
+        <form id="radioForm" action="/submit" >
+            <h2> фильтр:</h2>
+            <label>
+                <input type="radio" name="choice" value="all" onchange="">
+                все задачи
+            </label>
+            <label>
+                <input type="radio" name="choice" value="no done" onchange="">
+              не выполненные
+            </label>
+            <label>
+                <input type="radio" name="choice" value="done" onchange="">
+                выполненные
+            </label>
+        </form>
+    </div>
+    <div id="desk" class="desk__body"></div>
+</div>
+<div id="formPopup">
+    <div class="formPopup__body">
+        <button id="closeBtn" class="formPopup__close">x</button>
+        <form id="taskForm">
+            <div id="taskForm-fields"></div>
+            <div class="formPopup__footer">
+                <button id="submitBtn" class="submit" type="submit">ок</button>
+                <button id="cancelBtn" class="cancel">cancel</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+</body>
+<script type="module" src="./dist/app.js"></script>
+<script type="module" src="./dist/desk.js"></script>
+<script type="module" src="./dist/card.js"></script>
+<script type="module" src="./dist/form.js"></script>
+<script type="module" src="./dist/taskManager.js"></script>
+</html>
