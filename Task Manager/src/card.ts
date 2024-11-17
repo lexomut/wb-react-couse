@@ -77,7 +77,6 @@ export class Card {
     }
 
     change() {
-        console.log('change')
         // @ts-ignore
         popupForm.open(example.map(field => ({...field, value: this[field.name]}))
             , (obj) => {

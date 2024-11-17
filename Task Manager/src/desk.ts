@@ -28,7 +28,6 @@ class Desk {
 
     render(cards?:Card[]) {
         this.htmlElement.innerHTML = '';
-        console.log(cards);
         (cards || this.cards).forEach(card => {
             this.htmlElement.append(card.render())
         })
