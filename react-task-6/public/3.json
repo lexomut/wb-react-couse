@@ -1,0 +1,31 @@
+[
+  {
+    "name": "spear",
+    "height": 1,
+    "width": 3
+  },
+  {
+    "name": "axe",
+    "height": 1,
+    "width": 2
+  },
+  {
+    "name": "sword",
+    "height": 2,
+    "width": 1
+  },
+  {
+    "name": "spear",
+    "height": 1,
+    "width": 3
+  },
+  {
+    "name": "badge",
+    "height": 2,
+    "width": 2
+  },
+  {"name": "helmet",
+    "height": 1,
+    "width": 1
+  }
+]
