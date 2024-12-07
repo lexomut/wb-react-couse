@@ -99,13 +99,16 @@ export const App: React.FC = () => {
     return (
         <div>
             <h1>Полезные вещи</h1>
-            {error && <div style={{ color: 'red' }}>{error}</div>}
+            {error && <div style={{ color: 'red' ,fontSize:'30px'}}>{error}</div>}
             <div style={{ display: 'grid', gridTemplateColumns: `repeat(${FIELD_WIDTH}, 50px)` }}>
                 {field.map((row, y) =>
                     row.map((cell, x) => (
-                        <div onClick={()=>console.log(x,y,cell)}
+                        <div
                             key={`${x}-${y}`}
                             className={'cell'}
+                            style={ cell.item?.name==='badge'? {
+                                backgroundColor:'rgba(138,215,106,0.2)'
+                            }: {backgroundColor: cell.item?.name?'rgba(245,4,32,0.18)':'none'}}
                         >{cell.item && cell.image?<ItemComp item={cell.item}/>:''}
                         </div>
                     ))
