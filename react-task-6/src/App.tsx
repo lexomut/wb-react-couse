@@ -119,7 +119,7 @@ export const App: React.FC = () => {
                         onClick={() => placeItems(button)}
                         style={{ margin: '5px' }}
                     >
-                        Place {button.name}
+                        {button.name}
                     </button>
                 ))}
             </div>
