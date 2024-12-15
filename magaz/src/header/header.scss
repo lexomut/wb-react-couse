@@ -1,0 +1,6 @@
+@use '../variables.scss';
+
+.header{
+  display: flex;
+  border-radius: variables.$main-radius;
+}
