@@ -1,0 +1,35 @@
+@use '../variables.scss';
+
+.panel {
+  display: flex;
+  gap: 8px;
+  padding: 13px 0;
+  @media (max-width: 680px) {
+    display: none;
+  }
+
+  .panel_button {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background-color: white;
+
+    &--chart {
+      background-image: url("chart_Icon.svg");
+    }
+
+    &--delivery {
+      background-image: url("delivery_Icon.svg");
+    }
+
+    &--favorites {
+      background-image: url("icon_favorites.svg");
+    }
+
+    &--login {
+      background-image: url("icon_login.svg");
+    }
+
+  }
+}
+

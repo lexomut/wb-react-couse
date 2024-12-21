@@ -1,9 +1,11 @@
+import {Categories} from "../categories/Categories.tsx";
+import {MagazData} from "../App.tsx";
 
-export const MainPage = ()=>{
+export const MainPage = ({data}: {data: MagazData })=>{
     return(
         <>
             <div className={'banner'}></div>
-            {/*<Categories/>*/}
+            <Categories categories={data.categories}/>
         </>
     )
 }

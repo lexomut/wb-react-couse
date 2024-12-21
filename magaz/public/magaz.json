@@ -2,7 +2,7 @@
   "banner": {
     "image": "banner.png"
   },
-  "category": [
+  "categories": [
     {
       "tag": "help",
       "name": "Помощь психолога",
@@ -16,7 +16,7 @@
     {
       "tag": "art",
       "name": "Предметы искусства",
-      "image": "Эйфелева башня.png"
+      "image": "Эйфелева башня.png"
     },
     {
       "tag": "home",
@@ -49,8 +49,8 @@
       "image": "То самое кольцо.png"
     },
     {
-      "tag": "Real estate",
-      "name": "Недвижи-мость",
+      "tag": "Real_estate",
+      "name": "Недвижимость",
       "image": "дом милый дом.png"
     },
     {
@@ -61,7 +61,7 @@
     {
       "tag": "power",
       "name": "Могущество",
-      "image": "Злой дядька.png"
+      "image": "sauron.png"
     },
     {
       "tag": "style",

@@ -1,6 +1,52 @@
 @use '../variables.scss';
 
-.header{
+.header {
   display: flex;
   border-radius: variables.$main-radius;
+  padding: 0 16px;
+  gap: 20px;
+  width: 100%;
+}
+
+.logo {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 28px;
+  color: variables.$Shop-Black;
+  margin-top: 5px;
+}
+
+.search {
+  border-radius: 0 0 variables.$main-radius variables.$main-radius;
+  background-color: variables.$Shop-Almost-white;
+  flex-grow: 1;
+  display: flex;
+  padding: 13px 12px 15px 12px;
+  color: variables.$Shop-Gray;
+
+    @media (max-width: 680px) {
+      display: none;
+    }
+
+  .icon {
+    background-image: url("search_icon.svg");
+    margin-right: 8px;
+    width: 32px;
+    height: 32px;
+    color: variables.$Shop-Gray;
+  }
+
+  input::placeholder {
+    color: variables.$Shop-Gray;
+  }
+
+  input {
+    background: none;
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    font-size: 22px;
+    font-weight: 412;
+    line-height: 1;
+  }
 }

@@ -1,14 +1,15 @@
-import {Menu} from "./menu.tsx";
 import "./header.scss"
+import {Panel} from "./panel.tsx";
 
 export const Header= ()=>{
     return (
-        <div className={'header'}>
-            <div className={'header__title'}>'магаз'</div>
-            <div className={'search'}>
-                <input className={'search__input'} placeholder={'Поиск товаров'} />
+        <div className='header'>
+            <div className="logo">магаз</div>
+            <div className='search'>
+                <div className='icon'></div>
+                <input className='search__input' placeholder={'Поиск товаров'} />
             </div>
-            <Menu/>
+            <Panel/>
         </div>
     )
 }
