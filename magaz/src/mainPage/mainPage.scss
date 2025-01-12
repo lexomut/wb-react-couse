@@ -6,6 +6,9 @@
   border-radius: variables.$main-radius;
   background-position: center;
   background-size: cover;
+  @media (max-width: 768px) {
+    height: 209px;
+  }
 }
 
 .main-card {
@@ -13,11 +16,19 @@
   width: 100%;
   margin-bottom: 50px;
 
+  &__image-wrapper{
+    position: relative;
+
+  }
+
   &__pictures {
     width: 100%;
     height: 514px;
     display: flex;
     gap: 4px;
+    @media (max-width: 768px) {
+      height: 240px
+    }
 
     &.three {
       .main-card__image:nth-child(1) {
@@ -54,13 +65,14 @@
     display: flex;
     justify-content: center;
     margin-top: 4px;
-    @media (max-width: 680px) {
+    @media (max-width: 768px) {
       flex-direction: column;
       justify-content: start;
     }
   }
 
   &__title {
+    display: flex;
     font-size: 60px;
     font-weight: 500;
     line-height: 87%;
@@ -69,12 +81,20 @@
       font-weight: 550;
       line-height: 1
     }
+
+    span {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+    }
   }
 
-  &__info{
+  &__info {
     padding: 10px 12px;
 
   }
+
   &__description {
     font-size: 22px;
     font-weight: 550;
@@ -136,11 +156,14 @@
     }
   }
 
-  &__rating{
+  &__rating {
     display: flex;
-    ont-size: 16px;
+    font-size: 16px;
     font-weight: 412;
-    &::after{
+    gap: 2px;
+
+
+    &::after {
       content: '';
       height: 17px;
       width: 17px;
@@ -150,18 +173,18 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='15' viewBox='0 0 16 15' fill='none'%3E%3Cpath d='M8 0.5625L10.1293 5.50684L15.4896 6.00399L11.4452 9.55691L12.6288 14.8085L8 12.06L3.37119 14.8085L4.5548 9.55691L0.51043 6.00399L5.87075 5.50684L8 0.5625Z' fill='%23090909'/%3E%3C/svg%3E");
     }
   }
-  &__proof {
 
+  &__proof {
     display: flex;
     flex-direction: column;
     align-items: end;
-
   }
 
   &__like {
     display: flex;
-    ont-size: 16px;
+    font-size: 16px;
     font-weight: 412;
+    gap: 2px;
 
     &::after {
       content: '';
@@ -173,23 +196,39 @@
       background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.254 6.3579C14.0261 3.93779 12.6945 1.5364 10.2875 1.53127C9.19449 1.52894 8.32746 1.75019 6.99984 3.06269C5.6923 1.75019 4.81065 1.52954 3.74776 1.53127C1.56037 1.53482 0.0344495 3.85686 0.775179 6.3579C1.74619 9.63649 5.67893 12.0464 6.99983 12.8907C8.32201 12.0416 12.2093 9.63277 13.254 6.3579Z' fill='%23090909'/%3E%3C/svg%3E%0A");
     }
   }
-  &__discont{
+
+  &__discont {
     position: absolute;
     background: variables.$Shop-Light-gray;
     transform: rotate(-15deg);
+    border-radius: 4px;
+    font-size: 22px;
+    font-weight: 550;
     padding: 4px 6px 6px 6px;
+    bottom: 40px;
+    left: 12px;
+    line-height: 100%
   }
- &__badge {
-   position: absolute;
-   height: 25px;
-   width: 81px;
-   background-image: url("осенний сейл.png");
- }
+
+  &__badge {
+    bottom: 9px;
+    left: 12px;
+    position: absolute;
+    height: 26px;
+    width: 155px;
+    background-image: url("осенний сейл.png");
+  }
+
+  &__bottom-mobile {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .price {
   display: flex;
   align-items: end;
+
   &__now {
 
     leading-trim: both;
@@ -208,11 +247,60 @@
     line-height: 1;
 
   }
-  &__old{
+
+  &__old {
     font-size: 15px;
     font-weight: 550;
     color: #BCCDD1;
     text-decoration: line-through;
   }
+}
 
+
+.main-section {
+  &:first-child {
+    padding-top: 0
+  }
+
+  margin-bottom: 100px;
+  position: relative;
+  padding-top: 140px;
+  @media (max-width: 768px) {
+    padding-top: 36px;
+    margin-bottom: 38px;
+  }
+
+  &:has(.main-set) {
+    border-radius: 12px;
+    background: linear-gradient(to bottom right, #00FBFF 0%, #0051FF 50%) bottom right / 50% 50% no-repeat, linear-gradient(to bottom left, #00FBFF 0%, #0051FF 50%) bottom left / 50% 50% no-repeat, linear-gradient(to top left, #00FBFF 0%, #0051FF 50%) top left / 50% 50% no-repeat, linear-gradient(to top right, #00FBFF 0%, #0051FF 50%) top right / 50% 50% no-repeat, #090909;
+  }
+
+  &__bage {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-family: "Rubik Doodle Triangles";
+    font-size: 163px;
+    transform: rotate(-5deg);
+    z-index: 1;
+    @media (max-width: 768px) {
+      font-size: 60px;
+    }
+  }
+
+}
+
+
+.main-set {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 32px 4px 0;
+  gap: 4px;
+  justify-content: space-evenly;
+
+
+  .card {
+    color: variables.$Shop-White;
+
+  }
 }

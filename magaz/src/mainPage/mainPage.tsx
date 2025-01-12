@@ -15,12 +15,12 @@ function MainBanner({banner}: { banner: BannerData }) {
 
 export const MainPage = ({data}: { data: MagazData }) => {
     return (
-        <>
+        <div>
             <div className={'banner'}></div>
             <MainBanner banner={data.banner}/>
             <Categories categories={data.categories}/>
             <MainContent data={data} mainContentData={data.mainContentData}/>
-        </>
+        </div>
     )
 }
 

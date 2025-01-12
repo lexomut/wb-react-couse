@@ -3,5 +3,38 @@ $Shop-Black: #090909;
 $Shop-Almost-white:#F2F7F7;
 $Shop-Gray: #BCCDD1;
 $Shop-Light-gray: #E1ECED;
+$Shop-White: #FFF;
 
-$main-font: "Inter";
+$main-font: "Inter Variable";
+
+
+$font-rubik: "Rubik Dirt", sans-serif;
+
+
+@font-face {
+  font-family: "Inter Variable";
+  font-style: normal;
+  src: url("InterVariable.woff2") format("woff2");
+  font-feature-settings:
+          "liga" 1,
+          "calt" 1; /* fix for Chrome */
+}
+
+@font-face {
+  font-family: "Rubik Dirt";
+  font-style: normal;
+  src: url("RubikDirt-Regular.ttf") format("opentype");
+  font-feature-settings: "dlig" on;
+}
+
+@font-face {
+  font-family: "Rubik Doodle triangles";
+  src: url("RubikDoodleTriangles-Regular.ttf") format("opentype");
+  font-feature-settings: "dlig" on;
+}
+
+@font-face {
+  font-family: "Rubik Beastly";
+  src: url("RubikBeastly-Regular.ttf") format("opentype");
+  font-feature-settings: "dlig" on;
+}

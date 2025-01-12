@@ -10,7 +10,7 @@ const imageTypes:{[key:string]:{num:number,className:string}} = {
 
 }
 
-function Price(props: { cost: number }) {
+export function Price(props: { cost: number }) {
     return (
         <div className="price">
             <div className="price__now">{props.cost}₽</div>
@@ -31,14 +31,19 @@ export const MainCard = ({data, magazDta}: { data: MainContentItem, magazDta: Ma
 
     return (
         <div className='main-card'>
-            <div className="main-card__discont">-50%</div>
-            <div className="main-card__badge">осенний сейл</div>
-            <div className={`main-card__pictures ${imageTypes[data.type]?.className}`}>
-                {
-                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                    // @ts-expect-error
-                    arr.map((u,i)=> <div className='main-card__image' key={i} style={{backgroundImage: `url("${itemData.name}.png")`, backgroundColor:data.background}}></div>)}
+            <div className="main-card__image-wrapper">
+                <div className="main-card__discont">-50%</div>
+                <div className="main-card__badge"></div>
+                <div className={`main-card__pictures ${imageTypes[data.type]?.className}`}>
+
+                    {
+                        arr.map(() => <div className='main-card__image' style={{
+                            backgroundImage: `url("${itemData.name}.png")`,
+                            backgroundColor: data.background
+                        }}></div>)}
+                </div>
             </div>
+
             <div className="main-card__info">
                 <div className='main-card__description'>
                     <div className='main-card__title'>

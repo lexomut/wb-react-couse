@@ -1,0 +1,132 @@
+@use '../variables.scss';
+
+.card {
+  width: 283px;
+  position: relative;
+  margin-bottom: 28px;
+  @media (max-width: 768px) {
+    width: 181px;
+  }
+
+  &__image {
+    width: 100%;
+    height: 376px;
+    border-radius: variables.$main-radius;
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    @media (max-width: 768px) {
+      height: 240px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 8px 6px;
+    @media (max-width: 768px) {
+      flex-direction: column;
+      padding: 8px 12px;
+    }
+  }
+
+  &__title {
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    @media (max-width: 768px) {
+      order: 2;
+    }
+  }
+
+  &__proof {
+    @media (max-width: 768px) {
+      display: flex;
+      order: 3;
+    }
+  }
+
+  &__rating {
+    display: flex;
+    font-size: 16px;
+    font-weight: 412;
+    gap: 2px;
+
+    &::after {
+      content: '';
+      height: 17px;
+      width: 17px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15' fill='none'%3E%3Cpath fill='%23fff' d='m7.5.563 2.13 4.944 5.36.497-4.045 3.553 1.184 5.252L7.5 12.06l-4.629 2.748 1.184-5.251L.01 6.004l5.36-.497L7.5.563Z'/%3E%3C/svg%3E");
+    }
+  }
+
+  &__proof {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    @media (max-width: 768px) {
+      flex-direction: row;
+      gap: 7px;
+    }
+  }
+
+  &__like {
+    display: flex;
+    font-size: 16px;
+    font-weight: 412;
+    gap: 2px;
+
+    &::after {
+      content: '';
+      height: 17px;
+      width: 17px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: url("data:image/svg+xml,%3Csvg width='15' height='14' viewBox='0 0 15 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.754 6.3579C14.5261 3.93779 13.1945 1.5364 10.7875 1.53127C9.69449 1.52894 8.82746 1.75019 7.49984 3.06269C6.1923 1.75019 5.31065 1.52954 4.24776 1.53127C2.06037 1.53482 0.534449 3.85686 1.27518 6.3579C2.24619 9.63649 6.17893 12.0464 7.49983 12.8907C8.82201 12.0416 12.7093 9.63277 13.754 6.3579Z' fill='white'/%3E%3C/svg%3E%0A");
+    }
+  }
+
+  &__toFavirites {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background-position: center;
+    background-color: unset;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='34' fill='none'%3E%3Cpath fill='%23F2F7F7' fill-rule='evenodd' d='M27.154 3.28c-1.45-.26-3.014-.385-4.805.025-1 .228-1.995.606-3.026 1.137-.781-.85-1.584-1.543-2.439-2.098C15.35 1.348 13.846.93 12.422.682 5.021-.61-.52 6.286.32 13.662c.537 4.716 3.144 8.941 5.689 12.124 2.4 3.004 4.997 5.38 6.387 6.653l.293.268 1.415 1.3 1.773-.741.324-.135c1.735-.724 4.987-2.078 8.29-4.095 3.474-2.12 7.357-5.179 9.555-9.367 1.71-3.255 1.995-6.917.812-10.042-1.207-3.189-3.908-5.67-7.703-6.347Z' clip-rule='evenodd' opacity='.8'/%3E%3C/svg%3E");
+  }
+
+  &__toChart {
+    display: flex;
+    height: 45px;
+    width: 152px;
+    padding: 14px 24px 16px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    align-self: stretch;
+    border-radius: 12px;
+    background: #F94233;
+    color: white;
+    font-size: 22px;
+    font-weight: 550;
+    text-wrap: nowrap;
+    border: none;
+margin: 0 8px;
+    @media (max-width: 768px) {
+      width: calc(100% - 12px);
+      margin:  0 6px;
+    }
+  }
+}

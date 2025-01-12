@@ -1,11 +1,10 @@
-@use '../variables.scss';
+@use '../variables';
 
 .panel {
   display: flex;
   gap: 8px;
   padding: 13px 0;
-  @media (max-width: 680px) {
-    display: none;
+  @media (max-width: 768px) {
   }
 
   .panel_button {
@@ -30,6 +29,18 @@
       background-image: url("icon_login.svg");
     }
 
+  }
+}
+
+.mobile-panel {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 12px 20px 20px;
+  background: variables.$Shop-White;
+
+  .panel {
+    justify-content: space-around;
   }
 }
 
