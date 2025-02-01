@@ -49,7 +49,7 @@ function App() {
 
     return (
         <div className='main-wrapper'>
-            <Header/>
+            <Header data = {data}/>
             <MainPage data={data}/>
             {isMobile && <div className="mobile-panel"><Panel/></div>}
             <div className="footer">
