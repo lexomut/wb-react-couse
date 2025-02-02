@@ -1,17 +1,22 @@
-import {MagazData} from "../App.tsx";
+
 
 type AutocompleteProps = {
-    items:string[]
-    data?:MagazData
+    autocompleteItems:string[]
+    deleteCb:(str:string)=>void
 }
-export const Autocomplete=({items}:AutocompleteProps)=>{
+export const Autocomplete=({autocompleteItems,deleteCb}:AutocompleteProps)=>{
+// const [items,setItems]=useState<string[]>(autocompleteItems);
+// const deleteItem=(el:string)=>{
+//     setItems(items.filter(item=>item!==el));
+// }
+
     return (
         <div className='autocomplete'>
             <div className="autocomplete__list">
-                {items.map(item=>
+                {autocompleteItems.map(item=>
                     <div className="autocomplete__item">
                         <div className="autocomplete__item-text">{item}</div>
-                        <button className="autocomplete__item-remove">
+                        <button className="autocomplete__item-remove" onClick={()=>deleteCb(item)}>
                             <div className="cross-icon"></div>
                         </button>
                     </div>

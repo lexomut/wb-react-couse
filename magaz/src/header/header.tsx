@@ -13,7 +13,7 @@ export const Header = ({data}:{data:MagazData}) => {
     const [searchPopupVisible, showSearch] = useState(false)
     const [inputWidth, setInputWidth] = useState(0)
     const openSearchPopup = (e:React.FocusEvent<HTMLInputElement>) => {
-        setInputWidth((e.target.parentElement as HTMLElement).offsetWidth)
+        setInputWidth((e.target.parentElement as HTMLElement).offsetWidth )
         showSearch(true)
     }
 
@@ -28,7 +28,7 @@ export const Header = ({data}:{data:MagazData}) => {
             }
             {isMobile && <div onClick={() => showSearch(true)} className='header__mobile-search-icon'></div>}
             {!isMobile && <Panel/>}
-            {searchPopupVisible && <div className='overlay'><SearchPopup inputWidth={inputWidth} data={data} close={()=>showSearch(false)}/></div>}
+            {searchPopupVisible && <SearchPopup inputWidth={inputWidth} data={data} close={()=>showSearch(false)}/>}
         </div>
 
     )
@@ -43,23 +43,36 @@ data:MagazData;
 
 const SearchPopup = ({close,data,inputWidth}:SearchPopupProps) => {
 const inputRef = useRef<HTMLInputElement>(null);
+const [categories, setCategories] = useState(data.categories);
+const [autocompleteItems, setAutocompleteItems] = useState<string[]>(data.items.slice(0,5).map(el=>el.name));
     useEffect(() => {
-        console.log(inputWidth)
         if(inputRef.current){
             inputRef.current.focus()
         }
     }, []);
 
+ const  searchInput=()=>{
+     const filteredCategories = data.categories.filter(category=>category.name.includes((inputRef.current as HTMLInputElement).value))
+     setCategories(filteredCategories);
+  const res =  data.items.map(el=>el.name).filter((el)=> el.includes((inputRef.current as HTMLInputElement).value)).slice(0,5)
+      setAutocompleteItems(res)
+    }
+
+    const deleteCb = (str:string)=>{
+        setAutocompleteItems(autocompleteItems.filter(item=>item!==str));
+    }
+
+
     return (
         <div className='overlay' onClick={(e)=>{
             if((e.target as HTMLElement) .className==='overlay') close()}}>
-            <div className="search-popup-contnet" style={{width:`${inputWidth}px`}}>
+            <div className="search-popup-contnet"  style={{width: innerWidth >768? `${inputWidth}px`:undefined}}>
                 <div className='search'>
                     <div className='icon'></div>
-                    <input className='search__input' ref={inputRef} placeholder={'Поиск товаров'}/>
+                    <input className='search__input' ref={inputRef} placeholder={'Поиск товаров'} onBlur={close} onChange={searchInput}/>
                 </div>
-                <Autocomplete data={data} items={['маска гая фокса', 'циркониевый браслет', 'нефритовый стержень']}/>
-                <Categories categories={data.categories}/>
+                <Autocomplete deleteCb={deleteCb}  autocompleteItems={autocompleteItems}/>
+                <Categories categories={categories}/>
             </div>
 
         </div>

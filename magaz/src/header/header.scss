@@ -43,9 +43,9 @@
   color: variables.$Shop-Gray;
   max-width: 1036px;
 
-    //@media (max-width: 680px) {
-    //  display: none;
-    //}
+    @media (max-width: 768px) {
+      flex-grow: 0;
+    }
 
   .icon {
     background-image: url("search_icon.svg");
